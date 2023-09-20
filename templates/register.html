@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>registro</title>
+    <title>Registro</title>
 </head>
+
 <body>
-    <h1>CREAR UNA CUENTA</h1>
-    <form id="Registro_Form">
-        <label for="alias">alias:</label>
+    <h1>Registro</h1>
+    <form id="registerForm">
+        <label for="alias">Alias:</label>
         <input type="text" id="alias" name="alias" required>
         <br>
-        <label for="nombre">nombre:</label>
+        <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
         <br>
-        <label for="apellido">apellido:</label>
+        <label for="apellido">Apellido:</label>
         <input type="text" id="apellido" name="apellido" required>
         <br>
-        <label for="fecha_nacimiento">fecha nacimiento:</label>
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
         <br>
         <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password" required>
         <br>
-        <button type="submit">Confirmar</button>
+        <label for="correo_electronico">Correo Electrónico:</label>
+        <input type="email" id="correo_electronico" name="correo_electronico" required>
+        <br>
+        <button type="submit">Registrar</button>
     </form>
+    <div id="message"></div>
+
     <script src="../scripts/register.js"></script>
 </body>
+
 </html>
