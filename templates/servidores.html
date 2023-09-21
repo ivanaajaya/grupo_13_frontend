@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidores</title>
+</head>
+<body>
+    <div class="container">
+        <div class="barra_lateral">
+            <button id="open-modal">Nuevo</button>
+            <button>Explorar</button>
+            
+            <!-- Formulario de creación de servidor (oculto inicialmente) -->
+            <div id="modal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close" id="close-modal">&times;</span>
+                    <h2>Nuevo Servidor</h2>
+                    <form id="nuevo_servidor_form">
+                        <label for="nombre_servidor">Nombre del servidor:</label>
+                        <input type="text" id="nombre_servidor" name="nombre_servidor" required>
+                        
+                        <label for="descripcion">Descripción:</label>
+                        <input type="text" id="descripcion" name="descripcion" required>
+                        
+                        <label for="fecha_creacion">Fecha de creación:</label>
+                        <input type="date" id="fecha_creacion" name="fecha_creacion" required>
+
+
+                        <button type="submit">Crear Servidor</button>
+                    </form>
+                </div>
+            </div>
+            
+            
+            <div class="perfil_miniatura">
+                <img src="" alt="foto" srcset="">
+                <p>Nombre Perfil</p>
+            </div>
+            <div class="container_lista_servidores" id="container_lista_servidores"></div>
+        </div>
+    </div>
+<script type="module" src="../scripts/servidores.js"></script>
+</body>
+</html>

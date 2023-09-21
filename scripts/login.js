@@ -19,9 +19,10 @@ function login() {
     })
     .then(response => {
         if (response.status === 200) {
-            // Redirect to profile page if login is successful
+            // Si el inicio de sesión es exitoso, obtener el id_usuario y almacenarlo
             return response.json().then(data => {
-                window.location.href = "profile.html";
+                idUsuario = data.id_usuario;
+                window.location.href = "servidores.html";
             });
         } else {
             return response.json().then(data => {
