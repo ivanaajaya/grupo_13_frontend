@@ -1,0 +1,76 @@
+/* Estilos para el chat similar a Discord */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+#chat-messages {
+    flex: 1;
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: #fff;
+}
+
+#chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+#message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+}
+
+#send-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para los mensajes */
+.message {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+/* Estilos para la hora del mensaje */
+.message-time {
+    color: #555;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+/* Estilos para los mensajes del usuario actual */
+.my-message {
+    background-color: #28a745;
+}
