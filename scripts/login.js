@@ -43,6 +43,6 @@ function login() {
         }
     })
     .catch(error => {
-        document.getElementById("message").innerHTML = "An error occurred.";
+        document.getElementById("message").innerHTML = "Ocurrió un error.";
     });
 }

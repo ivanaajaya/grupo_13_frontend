@@ -1,0 +1,77 @@
+body {
+    background-color: #213341;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+
+div#message {
+    background-color: #3D184E;
+    max-width: 500px;
+    max-height: 500px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 50px;
+    border: 5px solid black; /* Borde alrededor del div de mensaje */
+}
+
+div#message p {
+    text-align: left;
+    margin: 20px 10px;
+}
+
+button#logout, a {
+    background-color: #3D184E;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 3px solid black; 
+}
+
+button#logout:hover, a:hover {
+    background-color: darkviolet; /* Cambiar el color al pasar el mouse */
+}
+
+/* Estilo para el enlace "Cambiar contraseña" */
+a[href="reset_password.html"] {
+    background-color: #3D184E;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px; /* Margen para separar del botón "Cerrar sesión" */
+    border: 3px solid black; 
+}
+
+/* Cambiar el color al pasar el mouse para el enlace "Cambiar contraseña" */
+a[href="reset_password.html"]:hover {
+    background-color: darkviolet;
+}
+#message {
+    color: red;
+    margin-top: 10px;
+}
