@@ -12,9 +12,11 @@ function updateProfile() {
         password: document.getElementById("editPassword").value,
         correo_electronico: document.getElementById("editCorreo").value,
         estado_activo: document.getElementById("editEstadoActivo").checked ? true : false,
-        imagen: null, // Debes proporcionar la lógica para manejar la imagen si es necesario
-        id_rol: parseInt(document.getElementById("editIdRol").value) // Asegúrate de que el valor sea un número entero
+        imagen: document.getElementById("editImagen").value,
     };
+    // imagen: null, // para manejar la imagen
+    // id_rol: parseInt(document.getElementById("editIdRol").value) 
+    console.log(typeof  data);
 
     fetch("http://127.0.0.1:5000/auth/update", {
         method: 'PUT',

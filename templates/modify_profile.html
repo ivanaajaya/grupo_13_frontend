@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/modify_profile.css">
     <title>Editar Perfil</title>
 </head>
 
@@ -30,20 +31,21 @@
             <input type="email" id="editCorreo" name="editCorreo" required><br>
 
             <label for="editEstadoActivo">Estado Activo:</label>
-            <input type="checkbox" id="editEstadoActivo" name="editEstadoActivo" value="1"><br>
+            <input type="checkbox" id="editEstadoActivo" name="editEstadoActivo" value="1" checked><br>
 
             <label for="editImagen">Imagen:</label>
             <input type="file" id="editImagen" name="editImagen" accept="image/*"><br>
 
-            <label for="editIdRol">Rol:</label>
+            <!-- <label for="editIdRol">Rol:</label>
             <select id="editIdRol" name="editIdRol">
                 <option value="1">Anónimo</option>
                 <option value="2">Registrado</option>
                 <option value="3">Administrador</option>
-            </select><br>
+            </select><br> -->
 
             <button type="button" id="saveChanges">Guardar cambios</button>
         </form>
+        <div id="message"></div>
         <p>ADVERTENCIA: UNA VEZ MODIFICADO UN DATO TENDRAS QUE VOLVER A LOGEARTE</p>
 
     </div>

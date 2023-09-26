@@ -75,3 +75,9 @@ div #message {
     color: red;
     margin-top: 10px;
 }
+/* CSS para el elemento img dentro del div#message */
+div#message img {
+    max-width: 10%; /* Establecer el ancho máximo de la imagen al 100% del contenedor */
+    height: auto; /* Hacer que la altura se ajuste automáticamente para mantener la proporción */
+    margin-left: 50px; /* Añadir margen para centrar la imagen horizontalmente */
+}
