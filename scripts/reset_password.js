@@ -1,32 +1,30 @@
-// Agregar event listeners para los botones de "Mostrar/Ocultar contraseña"
+// Agrega event listeners para los botones de "Mostrar/Ocultar contraseña"
 document.getElementById("showCurrentPassword").addEventListener("click", togglePasswordVisibility);
 document.getElementById("showNewPassword").addEventListener("click", togglePasswordVisibility);
 document.getElementById("showConfirmPassword").addEventListener("click", togglePasswordVisibility);
+// Obtén referencias a los elementos del formulario y al párrafo de mensaje
+const passwordInput = document.getElementById("newPassword");
+const confirmPasswordInput = document.getElementById("confirmPassword");
+const submitButton = document.getElementById("changePasswordButton");
+const message = document.getElementById("mensaje");
 
-// Agregar event listener para el formulario
-document.getElementById("changePasswordForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    console.log("paso por el formulario");
+// Agrega event listeners para los campos de contraseña
+passwordInput.addEventListener("input", validatePassword);
+confirmPasswordInput.addEventListener("input", validatePassword);
 
-    const newPassword = document.getElementById("newPassword").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
-    const passwordMatchError = document.getElementById("passwordMatchError");
-    const changePasswordButton = document.getElementById("changePasswordButton");
+// Función para validar las contraseñas
+function validatePassword() {
+    const password = passwordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
 
-    if (newPassword === confirmPassword) {
-        console.log("paso por el if")
-        // Las contraseñas coinciden, eliminar el mensaje de error y habilitar el botón
-        passwordMatchError.textContent = "";
-        changePasswordButton.disabled = false; // Habilitar el botón
-        // Aquí puedes continuar con el envío del formulario o la lógica necesaria
+    if (password === confirmPassword) {
+        submitButton.disabled = false;
+        message.textContent = "Las contraseñas coinciden.";
     } else {
-        console.log("paso por el elsse")
-        // Las contraseñas no coinciden, mostrar un mensaje de error y deshabilitar el botón
-        passwordMatchError.textContent = "Las contraseñas no coinciden.";
-        changePasswordButton.disabled = true; // Deshabilitar el botón
+        submitButton.disabled = true;
+        message.textContent = "Las contraseñas no coinciden.";
     }
-});
-
+}
 
 // Función para alternar la visibilidad de la contraseña
 function togglePasswordVisibility() {
@@ -41,11 +39,6 @@ function togglePasswordVisibility() {
     }
 }
 
-// Agregar event listener al botón "Cambiar Contraseña"
-// document.getElementById("submit").addEventListener("click", function (event) {
-//     event.preventDefault(); // Prevenir la acción predeterminada del formulario
-//     resetPassword();
-// });
 document.getElementById("changePasswordButton").addEventListener("click", function (event) {
     event.preventDefault(); // Prevenir la acción predeterminada del formulario
     resetPassword();
