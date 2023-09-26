@@ -71,7 +71,7 @@ a[href="reset_password.html"] {
 a[href="reset_password.html"]:hover {
     background-color: darkviolet;
 }
-#message {
+div #message {
     color: red;
     margin-top: 10px;
 }
