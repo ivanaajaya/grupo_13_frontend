@@ -1,3 +1,5 @@
+
+
 // JavaScript para manejar la lógica del chat
 const chatBox = document.getElementById('chat-box');
 const messageInput = document.getElementById('message');
