@@ -143,6 +143,8 @@ function enviarDatosServidor() {
         });
       }
     })
+
+
     .catch((error) => {
       console.error("Error de red:", error);
     });
