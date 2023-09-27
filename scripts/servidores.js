@@ -109,12 +109,12 @@ function enviarDatosServidor() {
   const nombreServidor = document.getElementById("nombre_servidor").value;
   const descripcion = document.getElementById("descripcion").value;
   const fechaCreacion = document.getElementById("fecha_creacion").value;
-  const idUsuario = localStorage.getItem('idUsuario');
+  // const idUsuario = localStorage.getItem('idUsuario');
 
 
   // Crear un objeto con los datos del servidor, incluyendo id_usuario
   const nuevoServidor = {
-    id_usuario:idUsuario,
+    // id_usuario:idUsuario,
     nombre_servidor: nombreServidor,
     descripcion: descripcion,
     fecha_creacion: fechaCreacion,
