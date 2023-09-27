@@ -12,9 +12,8 @@ function register() {
         fecha_nacimiento: document.getElementById("fecha_nacimiento").value,
         password: document.getElementById("password").value,
         correo_electronico: document.getElementById("correo_electronico").value,
-        fecha_registro: new Date().toISOString(), // Puedes establecer la fecha de registro aquí
-        estado_activo: true, // Por defecto, establecemos el estado a activo
-        id_rol: 1, // Debes obtener el ID del rol deseado de alguna manera
+        estado_activo: 1, // Por defecto, establecemos el estado a activo
+        id_rol: 2, // Debes obtener el ID del rol deseado de alguna manera
     };
 
     fetch("http://127.0.0.1:5000/auth/register", {

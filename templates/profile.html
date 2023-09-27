@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/profile.css">
     <title>Mostrar datos perfil</title>
 </head>
+
 <body>
     <div id="message">
-        <h1>User Profile</h1>
+        <h1>Mi Perfil</h1>
+        <p><strong>Imagen:</strong> <img id="imagen" src="" alt="Imagen de perfil"></p>
         <p><strong>Alias:</strong> <span id="alias"></span></p>
-        <p><strong>Correo electronico:</strong> <span id="correo_electronico"></span></p>
-        <p><strong>NOmbre:</strong> <span id="nombre"></span></p>
+        <p><strong>Nombre:</strong> <span id="nombre"></span></p>
         <p><strong>Apellido:</strong> <span id="apellido"></span></p>
+        <p><strong>Correo electrónico:</strong> <span id="correo_electronico"></span></p>
+        <p><strong>Fecha de nacimiento:</strong> <span id="fecha_nacimiento"></span></p>
+        <p><strong>Estado:</strong> <span id="estado_activo"></span></p>
     </div>
-    
-    <button id="logout">Logout</button>
-    
+    <div>
+        <!-- <button id="reset_password">Cambiar contraseña</button> -->
+        <a href="reset_password.html">Cambiar contraseña</a>
+    </div>
+    <button id="logout">Cerrar sesión</button>
+    <a href="modify_profile.html">Editar perfil</a>
+
     <script src="../scripts/profile.js"></script>
 </body>
+
 </html>

@@ -1,7 +1,11 @@
+
+
 // JavaScript para manejar la lógica del chat
 const chatBox = document.getElementById('chat-box');
 const messageInput = document.getElementById('message');
 const sendButton = document.getElementById('send');
+
+
 
 // Función para obtener la hora y fecha actual en formato legible
 function getCurrentDateTime() {
@@ -22,13 +26,18 @@ function addMessage(message) {
     `;
     chatBox.appendChild(messageDiv);
 
+    
+
     // Agregar evento de clic para editar
     const editButton = messageDiv.querySelector('.edit');
     editButton.addEventListener('click', () => {
         messageToEdit = messageDiv;
         messageInput.value = message.messageText;
         showEditBox();
+        
     });
+    editButton.classList.add("boton-editar");
+    
 
     // Agregar evento de clic para borrar
     const deleteButton = messageDiv.querySelector('.delete');

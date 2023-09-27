@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/modify_profile.css">
+    <title>Editar Perfil</title>
+</head>
+
+<body>
+    <div id="editProfile">
+        <h2>Editar perfil</h2>
+        <form id="editForm">
+            <label for="editAlias">Alias:</label>
+            <input type="text" id="editAlias" name="editAlias" required><br>
+
+            <label for="editNombre">Nombre:</label>
+            <input type="text" id="editNombre" name="editNombre" required><br>
+
+            <label for="editApellido">Apellido:</label>
+            <input type="text" id="editApellido" name="editApellido" required><br>
+
+            <label for="editFechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="editFechaNacimiento" name="editFechaNacimiento"><br>
+
+            <label for="editPassword">Contraseña:</label>
+            <input type="password" id="editPassword" name="editPassword"><br>
+
+            <label for="editCorreo">Correo electrónico:</label>
+            <input type="email" id="editCorreo" name="editCorreo" required><br>
+
+            <label for="editEstadoActivo">Estado Activo:</label>
+            <input type="checkbox" id="editEstadoActivo" name="editEstadoActivo" value="1" checked><br>
+
+            <label for="editImagen">Imagen:</label>
+            <input type="file" id="editImagen" name="editImagen" accept="image/*"><br>
+
+            <!-- <label for="editIdRol">Rol:</label>
+            <select id="editIdRol" name="editIdRol">
+                <option value="1">Anónimo</option>
+                <option value="2">Registrado</option>
+                <option value="3">Administrador</option>
+            </select><br> -->
+
+            <button type="button" id="saveChanges">Guardar cambios</button>
+        </form>
+        <div id="message"></div>
+        <p>ADVERTENCIA: UNA VEZ MODIFICADO UN DATO TENDRAS QUE VOLVER A LOGEARTE</p>
+
+    </div>
+    <button id="logout">Cerrar sesión</button>
+
+    <script src="../scripts/modify_profile.js"></script>
+</body>
+
+</html>

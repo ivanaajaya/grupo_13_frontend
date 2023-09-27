@@ -1,3 +1,15 @@
+// Agregar event listener para el botón "Mostrar contraseña"
+document.getElementById("showPasswordButton").addEventListener("click", function () {
+    const passwordInput = document.getElementById("password");
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text"; // Cambiar el tipo de entrada a "text" para mostrar la contraseña
+        this.textContent = "Ocultar"; // Cambiar el texto del botón
+    } else {
+        passwordInput.type = "password"; // Cambiar el tipo de entrada a "password" para ocultar la contraseña
+        this.textContent = "Mostrar"; // Cambiar el texto del botón
+    }
+});
+
 document.getElementById("loginForm").addEventListener("submit", function (event) {
     event.preventDefault();
     login();
@@ -31,6 +43,6 @@ function login() {
         }
     })
     .catch(error => {
-        document.getElementById("message").innerHTML = "An error occurred.";
+        document.getElementById("message").innerHTML = "Ocurrió un error.";
     });
 }
