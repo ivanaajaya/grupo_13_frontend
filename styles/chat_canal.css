@@ -1,0 +1,87 @@
+body {
+    background-color: #213341;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    color: white;
+    background-color: #3D184E;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 5px solid black;
+}
+
+form {
+    background-color: #3D184E;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 50px;
+    border: 5px solid black;
+}
+
+
+
+input[type="text"]{
+    width: 60%;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid black;
+    color: black;
+    margin-right: 100px;
+    
+
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #3D184E; /* Añade un fondo blanco para que el texto sea visible */
+    padding: 10px;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2); /* Agrega una sombra para destacar el input */
+}
+
+
+button {
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: darkviolet;
+}
+
+p {
+    color: white;
+    margin-top: 20px;
+}
+
+
+.boton-editar {
+
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 500px; /* Ajustar la distancia hacia la derecha según tus necesidades */
+}
+
+.boton-editar:hover {
+    background-color: darkviolet;
+}
+
