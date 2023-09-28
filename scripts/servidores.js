@@ -40,10 +40,7 @@ function getServidoresUsuario() {
                   <p>cantidad de usuario: ${servidor.cantUser}</p>
                   <button class="btn_borrar">Delete</button>
                   <div">
-                    <button class="ver-canal">Ver Contenido</button>
-                  </div>
-                  <div">
-                    <button class="mostrar-canal">Mostrar Canal</button>
+                    <button class="ver-canal">Mostrar Canal</button>
                   </div>
                   <div id="message"></div>
                 </div>
@@ -95,7 +92,14 @@ function mostrarCanales(servidor_id) {
         return response.json().then((data) => {
           // data es un arreglo de canales, puedes iterar sobre él para mostrar cada canal
           const TituloElement = document.createElement("div");
-          TituloElement.innerHTML = `<h2>Canales del servidor</h2>`;
+          TituloElement.innerHTML = `<h2>Canales del servidor</h2>
+                  <div">
+                    <button class="crear-canal">Añadir un Canal</button>
+                  </div>`;
+            // const btn_crear = servidorElement.querySelector(".crear-canal");
+            // btn_crear.addEventListener("click", () => {
+            //   crearCanal(nombre_canal, canal.id_servidor);
+            // });
           containerListaCanales.appendChild(TituloElement);
 
           for (let i = 0; i < data.length; i++) {
@@ -108,18 +112,13 @@ function mostrarCanales(servidor_id) {
                   <p>id_canal: ${canal.id_canal}</p>
                   <p>id_servidor: ${canal.id_servidor}</p>
                   <p>fecha_creacion: ${canal.fecha_creacion}</p>
-                  <div">
-                    <button class="crear-canal">Añadir un Canal</button>
-                  </div>
+                  
                 </div>
                 <div id="message"></div>
               </header>
             `;
 
-            // const btn_crear = servidorElement.querySelector(".crear-canal");
-            // btn_crear.addEventListener("click", () => {
-            //   crearCanal(nombre_canal, canal.id_servidor);
-            // });
+            
 
             containerListaCanales.appendChild(canalElement);
           }
@@ -135,7 +134,9 @@ function mostrarCanales(servidor_id) {
     });
 }
 
-//para crear un canal ---- falta hacer un modal o  algo para poder pedirle al usuario el nobre del canal, el id_servidor ya esta
+//para crear un canal funciona ---- falta hacer un modal o  algo para poder pedirle al usuario el nombre del canal, el id_servidor ya esta
+//en esta funcion no le paso coomo parametro nombre_canal y dentro de la funcion le pido al usuario que ingrese el nombre
+//pero al back le tengo que pasar nombre_canal, id_servidor
 function crearCanal(nombre_canal, id_servidor) {
   const url = "http://127.0.0.1:5000/canales";
 
