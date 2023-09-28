@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="../styles/servidores.css">
     <title>Servidores</title>
 </head>
-<body>
+<body id="myBody">
     <div class="container">
         <div class="barra_lateral">
             <h2>Crear Servidores</h2>
             <button id="open-modal">Nuevo</button>
-            <button>Explorar</button>
+            <button id="explorar-all">Explorar</button>
             
             <!-- Formulario de creación de servidor (oculto inicialmente) -->
             <div id="modal" class="modal" style="display: none;">
@@ -25,11 +25,13 @@
                         <label for="descripcion">Descripción:</label>
                         <input type="text" id="descripcion" name="descripcion" required>
                         
-                        <label for="fecha_creacion">Fecha de creación:</label>
-                        <input type="date" id="fecha_creacion" name="fecha_creacion" required>
+                        <!-- <label for="fecha_creacion">Fecha de creación:</label>
+                        <input type="date" id="fecha_creacion" name="fecha_creacion" required> -->
 
 
                         <button type="submit">Crear Servidor</button>
+                        <button id="unirse-servidor">Unirse a servidor</button>
+
                     </form>
                 </div>
             </div>
@@ -40,9 +42,11 @@
                 <p>Nombre Perfil</p>
             </div>
             <div class="container_lista_servidores" id="container_lista_servidores"></div>
+            <div class="container_lista_canales" id="container_lista_canales"></div>
         </div>
     </div>
-<script type="module" src="../scripts/login.js"></script>
+
+<!-- <script type="module" src="../scripts/login.js"></script> -->
 <script type="module" src="../scripts/servidores.js"></script>
 </body>
 </html>

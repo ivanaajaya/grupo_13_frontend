@@ -1,6 +1,5 @@
 window.addEventListener('load', function () {
     getProfile();
-    document.getElementById("reset_password").addEventListener("click", showPasswordModal);
     document.getElementById("logout").addEventListener("click", logout);
 });
 
@@ -54,7 +53,7 @@ function getProfile() {
 }
 
 function logout() {
-    console.log("Logout button clicked"); // Agrega este console.log
+    console.log("Se hizo clic en el botón Cerrar sesión"); // Agrega este console.log
     const url = "http://127.0.0.1:5000/auth/logout";
 
     fetch(url, {
@@ -64,7 +63,7 @@ function logout() {
         .then(response => {
             if (response.status === 200) {
                 return response.json().then(data => {
-                    window.location.href = "../templates/login.html";
+                    window.location.href = "login.html";
                 });
             } else {
                 return response.json().then(data => {
@@ -73,6 +72,7 @@ function logout() {
             }
         })
         .catch(error => {
-            document.getElementById("message").innerHTML = "Ocurrió un error.";
+            console.error("Error al cerrar sesión:", error);
+            document.getElementById("message").innerHTML = "Ocurrió un error al cerrar sesión.";
         });
 }
