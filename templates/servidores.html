@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/servidores.css">
     <title>Servidores</title>
 </head>
+
 <body id="myBody">
     <div class="container">
         <div class="barra_lateral">
             <h2>Crear Servidores</h2>
             <button id="open-modal">Nuevo</button>
             <button id="explorar-all">Explorar</button>
-            
+
             <!-- Formulario de creación de servidor (oculto inicialmente) -->
             <div id="modal" class="modal" style="display: none;">
                 <div class="modal-content">
@@ -21,13 +23,9 @@
                     <form id="nuevo_servidor_form">
                         <label for="nombre_servidor">Nombre del servidor:</label>
                         <input type="text" id="nombre_servidor" name="nombre_servidor" required>
-                        
+
                         <label for="descripcion">Descripción:</label>
                         <input type="text" id="descripcion" name="descripcion" required>
-                        
-                        <!-- <label for="fecha_creacion">Fecha de creación:</label>
-                        <input type="date" id="fecha_creacion" name="fecha_creacion" required> -->
-
 
                         <button type="submit">Crear Servidor</button>
                         <button id="unirse-servidor">Unirse a servidor</button>
@@ -35,18 +33,32 @@
                     </form>
                 </div>
             </div>
-            
-            
+
+
             <div class="perfil_miniatura">
                 <img src="" alt="foto" srcset="">
                 <p>Nombre Perfil</p>
             </div>
             <div class="container_lista_servidores" id="container_lista_servidores"></div>
             <div class="container_lista_canales" id="container_lista_canales"></div>
+
+            
+            <!-- <div id="nuevoModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Crear un Canal</h2>
+                    <label for="nombre_canal">Nombre del Canal:</label>
+                    <input type="text" id="nombre_canal" placeholder="Nombre del canal">
+                    <button id="btn_crear_canal">Crear Canal</button>
+                </div>
+            </div> -->
+
+
         </div>
     </div>
 
-<!-- <script type="module" src="../scripts/login.js"></script> -->
-<script type="module" src="../scripts/servidores.js"></script>
+    <!-- <script type="module" src="../scripts/login.js"></script> -->
+    <script type="module" src="../scripts/servidores.js"></script>
 </body>
+
 </html>

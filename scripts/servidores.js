@@ -116,10 +116,10 @@ function mostrarCanales(servidor_id) {
               </header>
             `;
 
-            const btn_crear = servidorElement.querySelector(".crear-canal");
-            btn_crear.addEventListener("click", () => {
-              crearCanal(servidor.id_servidor);
-            });
+            // const btn_crear = servidorElement.querySelector(".crear-canal");
+            // btn_crear.addEventListener("click", () => {
+            //   crearCanal(nombre_canal, canal.id_servidor);
+            // });
 
             containerListaCanales.appendChild(canalElement);
           }
@@ -135,8 +135,42 @@ function mostrarCanales(servidor_id) {
     });
 }
 
-function crearCanal() {
-  
+//para crear un canal ---- falta hacer un modal o  algo para poder pedirle al usuario el nobre del canal, el id_servidor ya esta
+function crearCanal(nombre_canal, id_servidor) {
+  const url = "http://127.0.0.1:5000/canales";
+
+  // Datos a enviar en el cuerpo de la solicitud POST
+  const data = {
+    nombre_canal: nombre_canal,
+    id_servidor: id_servidor,
+  };
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", // Indicar que se está enviando JSON en el cuerpo
+    },
+    credentials: "include",
+    body: JSON.stringify(data), // Convertir el objeto a JSON
+  })
+    .then((response) => {
+      if (response.status === 201) {
+        // El canal se creó exitosamente
+        // Puedes realizar acciones adicionales aquí si es necesario
+        console.log("Canal creado con éxito.");
+        
+        // Actualiza la lista de servidores
+        mostrarCanales();
+      } else {
+        return response.json().then((data) => {
+          // Mostrar un mensaje de error en caso de que falle la creación del canal
+          document.getElementById("message").innerHTML = data.message;
+        });
+      }
+    })
+    .catch((error) => {
+      document.getElementById("message").innerHTML = "Ocurrió un error al crear el canal.";
+    });
 }
 
 
@@ -261,12 +295,8 @@ function eliminarServidor(servidorId) {
 function enviarDatosServidor() {
   const url = "http://127.0.0.1:5000/servidores";
 
-  // Obtener los datos del formulario
   const nombreServidor = document.getElementById("nombre_servidor").value;
   const descripcion = document.getElementById("descripcion").value;
-  // const fechaCreacion = document.getElementById("fecha_creacion").value;
-  // const idUsuario = localStorage.getItem('idUsuario');
-
 
   // Crear un objeto con los datos del servidor, incluyendo id_usuario
   const nuevoServidor = {
@@ -305,11 +335,6 @@ function enviarDatosServidor() {
     });
 }
 
-
-// window.addEventListener('load', function () {
-
-//   document.getElementById(".unirse").addEventListener("click", unirseAServidor);
-// });
 
 function unirseAServidor(id_servidor) {
   console.log("paso por el unirseAServidor");

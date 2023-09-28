@@ -38,7 +38,7 @@ function getProfile() {
                         document.getElementById("imagen").src = data.imagen;
                     } else {
                         // Mostrar una imagen por defecto si no hay imagen de perfil
-                        document.getElementById("imagen").src = "ruta_a_imagen_por_defecto.jpg";
+                        document.getElementById("imagen").src = "../assets/jiji.jpg";
                     }
                 });
             } else {
