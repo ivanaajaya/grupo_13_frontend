@@ -118,6 +118,10 @@ function mostrarCanales(servidor_id) {
                 <div id="message"></div>
               </header>
             `;
+            const btn_mensajes = canalElement.querySelector(".ver-mensajes");
+            btn_mensajes.addEventListener("click", () => {
+              mostrarMensajes(canal.id_canal);
+            });
             containerListaCanales.appendChild(canalElement);
 
           }
@@ -130,6 +134,58 @@ function mostrarCanales(servidor_id) {
     })
     .catch((error) => {
       document.getElementById("message").innerHTML = "Ocurrió un Error al obtener los canales.";
+    });
+}
+
+function mostrarMensajes(canal_id) {
+  const url = `http://127.0.0.1:5000/mensajes/canalcanal/${canal_id}`;
+
+  // Obtener el contenedor de la lista de mensajes
+  const containerListaMensajes = document.getElementById("container_lista_mensajes");
+
+  // Limpiar el contenido anterior de la lista de mensajes
+  while (containerListaMensajes.firstChild) {
+    containerListaMensajes.removeChild(containerListaMensajes.firstChild);
+  }
+
+  fetch(url, {
+    method: "GET",
+    credentials: "include",
+  })
+    .then((response) => {
+      if (response.status === 200) {
+        return response.json().then((data) => {
+          // data es un arreglo de mensajes, puedes iterar sobre él para mostrar cada mensaje
+          const TituloElement = document.createElement("div");
+          TituloElement.innerHTML = `<h2>Mensajes del canal</h2>`;
+
+          containerListaMensajes.appendChild(TituloElement);
+
+          for (let i = 0; i < data.length; i++) {
+            const mensaje = data[i];
+            const mensajeElement = document.createElement("li");
+            mensajeElement.innerHTML = `
+              <div>
+                <p>ID del mensaje: ${mensaje.id_mensaje}</p>
+                <p>Contenido del mensaje: ${mensaje.contenido}</p>
+                <p>hora del mensaje: ${mensaje.hora_mensaje}</p>
+                <p>Fecha de envío: ${mensaje.fecha_mensaje}</p>
+                <p>id del usuario: ${mensaje.id_usuario}</p>
+                <p>Usuario: ${mensaje.id_canal}</p>
+              </div>
+              <div id="message"></div>
+            `;
+            containerListaMensajes.appendChild(mensajeElement);
+          }
+        });
+      } else {
+        return response.json().then((data) => {
+          document.getElementById("message").innerHTML = data.message;
+        });
+      }
+    })
+    .catch((error) => {
+      document.getElementById("message").innerHTML = "Ocurrió un Error al obtener los mensajes.";
     });
 }
 
