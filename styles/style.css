@@ -1,0 +1,217 @@
+/* Contenedor principal */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Barra lateral */
+.barra_lateral {
+    width: 250px;
+    background-color: #a4a0c6;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    flex-shrink: 0; /* Evita que la barra lateral se reduzca */
+    display: flex;
+    flex-direction: column;
+}
+
+.barra_lateral h2 {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Botones */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #3d184e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2a496e;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #999;
+    width: 300px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"],
+#unirse-servidor {
+    background-color: #3d184e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover,
+#unirse-servidor:hover {
+    background-color: #2a496e;
+}
+
+/* Perfil miniatura */
+.perfil_miniatura {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.perfil_miniatura img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.perfil_miniatura p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Contenedor de listas de servidores y canales */
+.container_lista_servidores,
+.container_lista_canales {
+    background-color: #999;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el chat similar a Discord */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Hace que el contenedor de mensajes ocupe el espacio disponible */
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#chat-messages {
+    flex: 1; /* Hace que el contenedor de mensajes ocupe el espacio disponible */
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 0 5px 5px 0; /* Ajusta los bordes */
+    margin-right: 10px;
+}
+
+#chat-input {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color:#f3fafb;
+}
+
+/* Estilos para el cuadro de entrada de mensajes */
+#message-input {
+    
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+    margin-right: 10px;
+    width: 90%;
+}
+
+/* Estilos para el botón de enviar */
+#send-button {
+    padding: 15px;
+    background-color:#3d184e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 10%;
+}
+
+#send-button:hover {
+    background-color: #2a496e;
+}
+
+/* Estilos para los mensajes */
+.message {
+    background-color: #a4a0c6;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+/* Estilos para la hora del mensaje */
+.message-time {
+    color: #555;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+/* Estilos para los mensajes del usuario actual */
+.my-message {
+    background-color: #28a745;
+}
+
+
+
