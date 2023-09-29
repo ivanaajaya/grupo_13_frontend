@@ -27,7 +27,7 @@ function getServidoresUsuario() {
           TituloElement.innerHTML = `
           <h1>Servidores en los que pertenece</h1>
         `;
-        containerListaServidores.appendChild(TituloElement);
+          containerListaServidores.appendChild(TituloElement);
           for (let i = 0; i < data.length; i++) {
             const servidor = data[i];
             const servidorElement = document.createElement("li");
@@ -38,24 +38,30 @@ function getServidoresUsuario() {
                   <p>id_servidor: ${servidor.id_servidor}</p>
                   <p>descripcion: ${servidor.descripcion}</p>
                   <p>cantidad de usuario: ${servidor.cantUser}</p>
-                  <button class="btn_borrar">Delete</button>
-                  <div">
+                  <div>
+                  <button class="crear-canal">Añadir un Canal</button>
+                  </div>
+                  <div>
                     <button class="ver-canal">Mostrar Canal</button>
                   </div>
                   <div id="message"></div>
                 </div>
               </header>
             `;
+
+            const btn_crear = servidorElement.querySelector(".crear-canal");
+            btn_crear.addEventListener("click", () => {
+              crearCanal(servidor.id_servidor);
+            });
             const btn_ver = servidorElement.querySelector(".ver-canal");
             btn_ver.addEventListener("click", () => {
               mostrarCanales(servidor.id_servidor);
             });
+            // const btn_delete = servidorElement.querySelector(".btn_borrar");
+            // btn_delete.addEventListener("click", () => {
+            //   eliminarServidor(servidor.id_servidor);
+            // });
 
-            const btn_delete = servidorElement.querySelector(".btn_borrar");
-            btn_delete.addEventListener("click", () => {
-              eliminarServidor(servidor.id_servidor);
-            });
-            
             containerListaServidores.appendChild(servidorElement);
           }
         });
@@ -69,7 +75,6 @@ function getServidoresUsuario() {
       document.getElementById("message").innerHTML = "Ocurrio un Error";
     });
 }
-
 
 function mostrarCanales(servidor_id) {
   console.log("paso por mostrarCanales")
@@ -92,14 +97,8 @@ function mostrarCanales(servidor_id) {
         return response.json().then((data) => {
           // data es un arreglo de canales, puedes iterar sobre él para mostrar cada canal
           const TituloElement = document.createElement("div");
-          TituloElement.innerHTML = `<h2>Canales del servidor</h2>
-                  <div">
-                    <button class="crear-canal">Añadir un Canal</button>
-                  </div>`;
-            // const btn_crear = servidorElement.querySelector(".crear-canal");
-            // btn_crear.addEventListener("click", () => {
-            //   crearCanal(nombre_canal, canal.id_servidor);
-            // });
+          TituloElement.innerHTML = `<h2>Canales del servidor</h2>`;
+
           containerListaCanales.appendChild(TituloElement);
 
           for (let i = 0; i < data.length; i++) {
@@ -112,15 +111,15 @@ function mostrarCanales(servidor_id) {
                   <p>id_canal: ${canal.id_canal}</p>
                   <p>id_servidor: ${canal.id_servidor}</p>
                   <p>fecha_creacion: ${canal.fecha_creacion}</p>
-                  
+                  <div">
+                    <button class="ver-mensajes">Ver chat</button>
+                  </div>
                 </div>
                 <div id="message"></div>
               </header>
             `;
-
-            
-
             containerListaCanales.appendChild(canalElement);
+
           }
         });
       } else {
@@ -134,50 +133,57 @@ function mostrarCanales(servidor_id) {
     });
 }
 
-//para crear un canal funciona ---- falta hacer un modal o  algo para poder pedirle al usuario el nombre del canal, el id_servidor ya esta
-//en esta funcion no le paso coomo parametro nombre_canal y dentro de la funcion le pido al usuario que ingrese el nombre
-//pero al back le tengo que pasar nombre_canal, id_servidor
-function crearCanal(nombre_canal, id_servidor) {
-  const url = "http://127.0.0.1:5000/canales";
+// //para crear un canal funciona ---- falta hacer un modal o  algo para poder pedirle al usuario el nombre del canal, el id_servidor ya esta
+// //en esta funcion no le paso coomo parametro nombre_canal y dentro de la funcion le pido al usuario que ingrese el nombre
+// //pero al back le tengo que pasar nombre_canal, id_servidor
+// //nombre_canal, 
+function crearCanal(id_servidor) {
 
-  // Datos a enviar en el cuerpo de la solicitud POST
-  const data = {
-    nombre_canal: nombre_canal,
-    id_servidor: id_servidor,
-  };
-
-  fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json", // Indicar que se está enviando JSON en el cuerpo
-    },
-    credentials: "include",
-    body: JSON.stringify(data), // Convertir el objeto a JSON
-  })
-    .then((response) => {
-      if (response.status === 201) {
-        // El canal se creó exitosamente
-        // Puedes realizar acciones adicionales aquí si es necesario
-        console.log("Canal creado con éxito.");
-        
-        // Actualiza la lista de servidores
-        mostrarCanales();
-      } else {
-        return response.json().then((data) => {
-          // Mostrar un mensaje de error en caso de que falle la creación del canal
-          document.getElementById("message").innerHTML = data.message;
-        });
-      }
+  const nombre_canal = prompt("Ingrese el nombre del canal:");
+  if (nombre_canal) {
+    const url = "http://127.0.0.1:5000/canales";
+  
+    // Datos a enviar en el cuerpo de la solicitud POST
+    const data = {
+      nombre_canal: nombre_canal,
+      servidor_id: id_servidor,
+    };
+  
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Indicar que se está enviando JSON en el cuerpo
+      },
+      credentials: "include",
+      body: JSON.stringify(data), // Convertir el objeto a JSON
     })
-    .catch((error) => {
-      document.getElementById("message").innerHTML = "Ocurrió un error al crear el canal.";
-    });
+      .then((response) => {
+        if (response.status === 201) {
+          // El canal se creó exitosamente
+          // Puedes realizar acciones adicionales aquí si es necesario
+          console.log("Canal creado con éxito.");
+          
+          // Actualiza la lista de servidores
+          mostrarCanales();
+        } else {
+          return response.json().then((data) => {
+            // Mostrar un mensaje de error en caso de que falle la creación del canal
+            document.getElementById("message").innerHTML = data.message;
+          });
+        }
+      })
+      .catch((error) => {
+        document.getElementById("message").innerHTML = "Ocurrió un error al crear el canal.";
+      });
+  } else {
+    // El usuario canceló la entrada o no proporcionó un nombre de canal
+    console.log("El usuario canceló la creación del canal.");
+  }
 }
 
 
-
 // Agrega un escuchador de eventos al botón "Explorar"
-document.getElementById("explorar-all").addEventListener("click", function() {
+document.getElementById("explorar-all").addEventListener("click", function () {
   getservidor();
 });
 
@@ -367,7 +373,7 @@ function unirseAServidor(id_servidor) {
       } else {
         return response.json().then(data => {
           document.getElementById("message").innerHTML = data.message;
-      });
+        });
       }
     })
     .catch((error) => {
