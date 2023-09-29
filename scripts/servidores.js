@@ -114,6 +114,7 @@ function mostrarCanales(servidor_id) {
                   <div">
                     <button class="ver-mensajes">Ver chat</button>
                   </div>
+                  
                 </div>
                 <div id="message"></div>
               </header>
@@ -166,15 +167,22 @@ function mostrarMensajes(canal_id) {
             const mensajeElement = document.createElement("li");
             mensajeElement.innerHTML = `
               <div>
-                <p>ID del mensaje: ${mensaje.id_mensaje}</p>
-                <p>Contenido del mensaje: ${mensaje.contenido}</p>
-                <p>hora del mensaje: ${mensaje.hora_mensaje}</p>
-                <p>Fecha de envío: ${mensaje.fecha_mensaje}</p>
-                <p>id del usuario: ${mensaje.id_usuario}</p>
-                <p>Usuario: ${mensaje.id_canal}</p>
+                <p>Contenido del mensaje: ${mensaje.id_mensaje}</p>
+                <p>Fecha de envío: ${mensaje.contenido}</p>
+                <p>Usuario: ${mensaje.fecha_mensaje}</p>
+                <p>id canal: ${mensaje.id_usuario}</p>
+                <p>id Usuario: ${mensaje.id_canal}</p>
+                <div">
+                    <button class="enviar-mensaje">Enviar mensaje</button>
+                </div>
               </div>
               <div id="message"></div>
             `;
+            const btn_mensajes = mensajeElement.querySelector(".enviar-mensaje");
+            btn_mensajes.addEventListener("click", () => {
+              enviarMensajes(mensaje.id_canal, mensaje.id_usuario);
+            });
+
             containerListaMensajes.appendChild(mensajeElement);
           }
         });
@@ -189,10 +197,53 @@ function mostrarMensajes(canal_id) {
     });
 }
 
-// //para crear un canal funciona ---- falta hacer un modal o  algo para poder pedirle al usuario el nombre del canal, el id_servidor ya esta
-// //en esta funcion no le paso coomo parametro nombre_canal y dentro de la funcion le pido al usuario que ingrese el nombre
-// //pero al back le tengo que pasar nombre_canal, id_servidor
-// //nombre_canal, 
+function enviarMensajes(id_usuario, id_canal) {
+  console.log("isusuario", id_usuario)
+  console.log("canal", id_canal)
+  const mensaje = prompt("Ingrese el mensaje:");
+  console.log("mensaje", mensaje)
+  if (mensaje) {
+    const url = "http://127.0.0.1:5000/mensajes";
+  
+    // Datos a enviar en el cuerpo de la solicitud POST
+    const data = {
+      contenido: mensaje,
+      id_usuario: id_usuario,
+      id_canal:id_canal,
+    };
+  
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Indicar que se está enviando JSON en el cuerpo
+      },
+      credentials: "include",
+      body: JSON.stringify(data), // Convertir el objeto a JSON
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          // El Mensaje se creó exitosamente
+          // Puedes realizar acciones adicionales aquí si es necesario
+          console.log("Mensaje creado con éxito.");
+          // Actualiza la lista de servidores
+          mostrarMensajes();
+        } else {
+          return response.json().then((data) => {
+            // Mostrar un mensaje de error en caso de que falle la creación del canal
+            document.getElementById("message").innerHTML = data.message;
+          });
+        }
+      })
+      .catch((error) => {
+        document.getElementById("message").innerHTML = "Ocurrió un error al crear el canal.";
+      });
+  } else {
+    // El usuario canceló la entrada o no proporcionó un nombre de canal
+    console.log("El usuario canceló la creación del canal.");
+  }
+}
+
+
 function crearCanal(id_servidor) {
 
   const nombre_canal = prompt("Ingrese el nombre del canal:");
@@ -275,15 +326,16 @@ function getservidor() {
                             <p>descripcion: ${servidor.descripcion}</p>
                             <p>cantidad de usuario: ${servidor.cantUser}</p>
                             <button class="unirse">Unirme</button>
-                            <button class="btn_borrar">Delete</button>
+                            
                             <div id="message"></div>
                           </div>
                         </header>
                         `;
-            const btn_delete = servidorElement.querySelector(".btn_borrar");
-            btn_delete.addEventListener("click", () => {
-              eliminarServidor(servidor.id_servidor);
-            });
+            //<button class="btn_borrar">Delete</button> 
+            //const btn_delete = servidorElement.querySelector(".btn_borrar");
+            // btn_delete.addEventListener("click", () => {
+            //   eliminarServidor(servidor.id_servidor);
+            // });
 
             const unirse = servidorElement.querySelector(".unirse");
             unirse.addEventListener("click", () => {
@@ -333,26 +385,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function eliminarServidor(servidorId) {
-  const url = `http://127.0.0.1:5000/servidores/${servidorId}`;
+// function eliminarServidor(servidorId) {
+//   const url = `http://127.0.0.1:5000/servidores/${servidorId}`;
 
-  fetch(url, {
-    method: "DELETE",
-  })
-    .then((response) => {
-      if (response.status === 204) {
-        // Éxito, el servidor se eliminó con éxito
-        console.log("Servidor eliminado con éxito.");
-        // Actualiza la lista de servidores
-        getservidor();
-      } else {
-        console.error("Error al eliminar el servidor.");
-      }
-    })
-    .catch((error) => {
-      console.error("Error de red:", error);
-    });
-}
+//   fetch(url, {
+//     method: "DELETE",
+//   })
+//     .then((response) => {
+//       if (response.status === 204) {
+//         // Éxito, el servidor se eliminó con éxito
+//         console.log("Servidor eliminado con éxito.");
+//         // Actualiza la lista de servidores
+//         getservidor();
+//       } else {
+//         console.error("Error al eliminar el servidor.");
+//       }
+//     })
+//     .catch((error) => {
+//       console.error("Error de red:", error);
+//     });
+// }
 
 
 function enviarDatosServidor() {
